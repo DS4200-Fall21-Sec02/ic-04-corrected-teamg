@@ -38,7 +38,6 @@ let group1 = svg1.append("group1")
 
 //https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
 //Loading Data from CSV
-
 d3.csv("data/data.csv").then( function (data) {
 
     console.log(data)
@@ -54,6 +53,18 @@ d3.csv("data/data.csv").then( function (data) {
     group1.append("group1")
          .attr("transform", "translate(0," + height + ")")
          .call(d3.axisBottom(xScale));
+
+
+    //Adding Bars
+    group1.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return xScale(d.x); })
+        .attr("y", function(d) { return yScale(d.y); })
+        .attr("width", xScale.bandwidth())
+        .attr("height", function(d) { return height - yScale(d.value); });
+
 
 
 });
