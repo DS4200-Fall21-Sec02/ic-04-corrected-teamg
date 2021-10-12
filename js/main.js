@@ -38,11 +38,11 @@ let group1 = svg1.append("group1")
 
 //https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
 //Loading Data from CSV
-let data1
+
 d3.csv("./data/data.csv", function(error, data) {
-    data1 = data1.append(data)
+    console.log(data)
 });
-console.log(data1)
+
 
     //Mapping Discrete X Values to X Axis
     xScale.domain(data.map(function(data1) { return data1.x; }));
