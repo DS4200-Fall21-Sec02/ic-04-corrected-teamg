@@ -45,7 +45,6 @@ d3.csv("data/data.csv").then( function (data) {
     yScale.domain([0, d3.max(data, function(data1) { return data1.y; })]);
 
 
-
     //appending x-axis to group
     group1.append("group1")
          .attr("transform", "translate(0," + height + ")")
