@@ -40,9 +40,9 @@ d3.csv("data/data.csv").then( function (data) {
     console.log(data)
 
     //Mapping Discrete X Values to X Axis
-    xScale.domain(data.map(function(data1) { return data1.x; }));
+    xScale.domain(data.map(function(d) { return d.X; }));
     //Mapping Y Values from 0 to the max Y value
-    yScale.domain([0, d3.max(data, function(data1) { return data1.y; })]);
+    yScale.domain([0, d3.max(data, function(data1) { return data1.Y; })]);
 
 
     //appending x-axis to group
