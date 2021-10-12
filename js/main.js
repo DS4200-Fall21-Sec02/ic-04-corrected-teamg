@@ -48,22 +48,22 @@ d3.csv("data/data.csv").then( function (data) {
     //appending x-axis to group
     group1.append("group1")
          .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(xScale));
+         .call(d3.axisBottom(x));
 
     //appending y-axis scale to group
     group1.append("group1")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisLeft(yScale));
+        .call(d3.axisLeft(y));
 
 
     svg1.selectAll(".bar")
         .data(data)
         .enter().append("rect")
         .attr("class", "bar")
-        .attr("x", function(d) { return x(d.name); })
+        .attr("x", function(d) { return x(d.X); })
         .attr("width", x.bandwidth())
-        .attr("y", function(d) { return y(d.amounts); })
-        .attr("height", function(d) { return height - y(d.amounts); });
+        .attr("y", function(d) { return y(d.Y); })
+        .attr("height", function(d) { return height - y(d.Y); });
 
     // Add x-axis
     svg1.append("g")
