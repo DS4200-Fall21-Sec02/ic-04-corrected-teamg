@@ -1,10 +1,6 @@
 
 
-//https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
 
-let data = d3.csv("data/data.csv", function(data) {
-    console.log(data);
-    })
 
 let margin = {
     top: 60,
@@ -19,8 +15,8 @@ let margin = {
 let svg1 = d3.select('#d3-container')
   .append('svg')
   .attr('preserveAspectRatio', 'xMidYMid meet') // this will scale your visualization according to the size of its parent element and the page.
-  .attr('width', '100%') // this is now required by Chrome to ensure the SVG shows up at all
-  .style('background-color', 'blue')
+  .attr('width', '60%') // this is now required by Chrome to ensure the SVG shows up at all
+  .style('background-color', 'white')
   .style('border', 'solid')
   .attr('viewBox', [0, 0, width + margin.left + margin.right, height + margin.top + margin.bottom].join(' '))
 
@@ -28,43 +24,31 @@ let svg1 = d3.select('#d3-container')
 
 
 //https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
-/*
-var svg = d3.select("svg"),
-    margin = 200,
-    width = svg.attr("width") - margin,
-    height = svg.attr("height") - margin
+//Adapted for our assignment
 
-
-var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+//Settig Scale for Bar Chat
+let xScale = d3.scaleBand().range([0, width]).padding(0.5),
     yScale = d3.scaleLinear().range([height, 0]);
 
-var g = svg.append("g")
+//Creating Group to store Chart Elements
+let group1 = svg1.append("group1")
     .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-d3.csv("XYZ.csv", function(error, data) {
-    if (error) {
-        throw error;
-    }
+//https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
+//Loading Data from CSV
+d3.csv("data/data.csv", function(data) {
+    console.log(data);
+});
 
-    xScale.domain(data.map(function(d) { return d.year; }));
-    yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
+//Mapping Discrete X Values to X Axis
+xScale.domain(data.map(function(data1) { return data1.x; }));
+//Mapping Y Values from 0 to the max Y value
+yScale.domain([0, d3.max(data, function(data1) { return data1.y; })]);
 
-    g.append("g")
+
+
+//appending x-axis scale to group
+group1.append("group1")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(xScale));
 
-    g.append("g")
-        .call(d3.axisLeft(yScale).tickFormat(function(d){
-            return "$" + d;
-        }).ticks(10));
-
-
-    g.selectAll(".bar")
-        .data(data)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return xScale(d.year); })
-        .attr("y", function(d) { return yScale(d.value); })
-        .attr("width", xScale.bandwidth())
-        .attr("height", function(d) { return height - yScale(d.value); })});
-*/
