@@ -23,10 +23,12 @@ let svg1 = d3.select('#d3-container')
 
 
 
-//https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
-//Adapted for our assignment
 
-//Settig Scale for Bar Chat
+
+//https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
+//Adapted for our assignment for most code
+
+//Setting Scale for Bar Chat
 let xScale = d3.scaleBand().range([0, width]).padding(0.5),
     yScale = d3.scaleLinear().range([height, 0]);
 
@@ -36,7 +38,7 @@ let group1 = svg1.append("group1")
 
 //https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
 //Loading Data from CSV
-d3.csv("data/data.csv", function(data) {
+d3.csv("/data/data.csv", function(error, data) {
     console.log(data);
 });
 
@@ -51,4 +53,5 @@ yScale.domain([0, d3.max(data, function(data1) { return data1.y; })]);
 group1.append("group1")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(xScale));
+
 
