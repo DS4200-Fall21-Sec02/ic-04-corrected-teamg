@@ -42,7 +42,7 @@ let group1 = svg1.append("group1")
 d3.csv("data/data.csv", function(error, data) {
     console.log(data)
 
-
+});
 
     //Mapping Discrete X Values to X Axis
     xScale.domain(data.map(function(data1) { return data1.x; }));
@@ -56,5 +56,5 @@ d3.csv("data/data.csv", function(error, data) {
          .attr("transform", "translate(0," + height + ")")
          .call(d3.axisBottom(xScale));
 
-});
+
 
