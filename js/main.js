@@ -45,19 +45,25 @@ d3.csv("data/data.csv").then( function (data) {
     yScale.domain([0, d3.max(data, function(data1) { return data1.Y; })]);
 
 
-    //appending x-axis to group
-    group1.append("group1")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(xScale));
 
-    //appending y-axis scale to group
-    group1.append("group1")
+//https://www.educative.io/blog/d3-js-tutorial-bar-chart
+    svg1.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.name); })
+        .attr("width", x.bandwidth())
+        .attr("y", function(d) { return y(d.amounts); })
+        .attr("height", function(d) { return height - y(d.amounts); });
+
+    // Add the x-axis
+    svg1.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisLeft(yScale));
+        .call(d3.axisBottom(x));
 
-
-
-
+    // Add the y-axis
+    svg1.append("g")
+        .call(d3.axisLeft(y));
 
 });
 
