@@ -1,6 +1,10 @@
 
-// write your javascript code here.
-// feel free to change the pre-set attributes as you see fit
+
+//https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
+
+let data = d3.csv("data/data.csv", function(data) {
+    console.log(data);
+    })
 
 let margin = {
     top: 60,
