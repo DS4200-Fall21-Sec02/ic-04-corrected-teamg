@@ -11,7 +11,8 @@ let margin = {
   width = 500 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
-//SVG that will hold the visualization 
+//SVG that will hold the visualization
+/*
 let svg1 = d3.select('#d3-container')
   .append('svg')
   .attr('preserveAspectRatio', 'xMidYMid meet') // this will scale your visualization according to the size of its parent element and the page.
@@ -21,6 +22,12 @@ let svg1 = d3.select('#d3-container')
   .attr('viewBox', [0, 0, width + margin.left + margin.right, height + margin.top + margin.bottom].join(' '))
 
 
+ */
+
+var svg1 = d3.select("svg"),
+    margin = 200,
+    width = svg.attr("width") - margin,
+    height = svg.attr("height") - margin
 
 
 
@@ -49,10 +56,15 @@ d3.csv("data/data.csv").then( function (data) {
 
 
 
-    //appending x-axis scale to group
+    //appending x-axis to group
     group1.append("group1")
          .attr("transform", "translate(0," + height + ")")
          .call(d3.axisBottom(xScale));
+
+    //appending y-axis scale to group
+    group1.append("group1")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisLeft(yScale));
 
 
     //Adding Bars
