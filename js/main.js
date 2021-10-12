@@ -30,8 +30,10 @@ let x = d3.scaleBand().range([0, width]).padding(0.5),
     y = d3.scaleLinear().range([height, 0]);
 
 //Creating Group to store Chart Elements
-let group1 = svg1.append("group1")
+/*let group1 = svg1.append("group1")
     .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+ */
 
 //https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
 //Loading Data from CSV
@@ -45,7 +47,7 @@ d3.csv("data/data.csv").then( function (data) {
     y.domain([0, d3.max(data, function(data1) { return data1.Y; })]);
 
 
-    //appending x-axis to group
+ /*   //appending x-axis to group
     group1.append("group1")
          .attr("transform", "translate(0," + height + ")")
          .call(d3.axisBottom(x));
@@ -56,6 +58,9 @@ d3.csv("data/data.csv").then( function (data) {
         .call(d3.axisLeft(y));
 
 
+  */
+
+   // https://www.educative.io/blog/d3-js-tutorial-bar-chart
     svg1.selectAll(".bar")
         .data(data)
         .enter().append("rect")
