@@ -39,9 +39,8 @@ let group1 = svg1.append("group1")
 //https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
 //Loading Data from CSV
 
-d3.csv("/data/data.csv", function(error, data) {
+d3.csv("/data/data.csv", function(data) {
     console.log(data)
-
 });
 
     //Mapping Discrete X Values to X Axis
