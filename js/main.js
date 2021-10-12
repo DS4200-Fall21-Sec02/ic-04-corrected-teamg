@@ -39,9 +39,12 @@ let group1 = svg1.append("group1")
 //https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
 //Loading Data from CSV
 
-d3.csv("data/data.csv", function(data) {
+d3.csv("data/data.csv", function (error, data) {
+    if (error) {
+        throw error;
+    }
     console.log(data)
-});
+
 
     //Mapping Discrete X Values to X Axis
     xScale.domain(data.map(function(data1) { return data1.x; }));
@@ -55,5 +58,5 @@ d3.csv("data/data.csv", function(data) {
          .attr("transform", "translate(0," + height + ")")
          .call(d3.axisBottom(xScale));
 
-
+});
 
