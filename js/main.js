@@ -26,8 +26,8 @@ let svg1 = d3.select('#d3-container')
 //Adapted for our assignment for most code
 
 //Setting Scale for Bar Chart
-let xScale = d3.scaleBand().range([0, width]).padding(0.5),
-    yScale = d3.scaleLinear().range([height, 0]);
+let x = d3.scaleBand().range([0, width]).padding(0.5),
+    y = d3.scaleLinear().range([height, 0]);
 
 //Creating Group to store Chart Elements
 let group1 = svg1.append("group1")
@@ -40,13 +40,22 @@ d3.csv("data/data.csv").then( function (data) {
     console.log(data)
 
     //Mapping Discrete X Values to X Axis
-    xScale.domain(data.map(function(d) { return d.X; }));
+    x.domain(data.map(function(d) { return d.X; }));
     //Mapping Y Values from 0 to the max Y value
-    yScale.domain([0, d3.max(data, function(data1) { return data1.Y; })]);
+    y.domain([0, d3.max(data, function(data1) { return data1.Y; })]);
 
 
+    //appending x-axis to group
+    group1.append("group1")
+         .attr("transform", "translate(0," + height + ")")
+         .call(d3.axisBottom(xScale));
 
-//https://www.educative.io/blog/d3-js-tutorial-bar-chart
+    //appending y-axis scale to group
+    group1.append("group1")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisLeft(yScale));
+
+
     svg1.selectAll(".bar")
         .data(data)
         .enter().append("rect")
@@ -56,14 +65,18 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("y", function(d) { return y(d.amounts); })
         .attr("height", function(d) { return height - y(d.amounts); });
 
-    // Add the x-axis
+    // Add x-axis
     svg1.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
 
-    // Add the y-axis
+    // Add y-axis
     svg1.append("g")
         .call(d3.axisLeft(y));
+
+
+
+
 
 });
 
