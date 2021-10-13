@@ -16,7 +16,12 @@ let svg1 = d3.select('#d3-container')
   .style('border', 'solid')
   .attr('viewBox', [-25 , -20 , width + margin.left + margin.right, height + margin.top + margin.bottom].join(' '))
 
-
+//https://chartio.com/resources/tutorials/how-to-show-data-on-mouseover-in-d3js/
+let tooltip = d3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("z-index", "15")
+    .style("visibility", "hidden");
 
 //https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
 //Adapted for our assignment for most code
@@ -50,7 +55,11 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("width", x.bandwidth())
         .attr("y", function(d) { return y(d.Y); })
         .attr("height", function(d) { return height - y(d.Y); })
-        .attr("fill", "#f57842");
+        .attr("fill", "#f57842")
+        .on("mouseover", function(d){
+            d3.select(this)
+                .text(d.value)
+                .style("visibility", "visible");})
 
     //Append the x-axis to the SVG
     svg1.append("g")
