@@ -38,7 +38,7 @@ d3.csv("data/data.csv").then( function (data) {
     //Mapping Discrete X Values to the domain for X Axis
     x.domain(data.map(function(d) { return d.X; }));
     //Mapping Y Values from 0 to the max Y value + 10
-    y.domain([0, 10 + (d3.max(data, function(data1) { return data1.Y; }))]);
+    y.domain([0, 100]);
 
    //https://www.educative.io/blog/d3-js-tutorial-bar-chart
 
