@@ -1,10 +1,10 @@
 let margin = {
     top: 60,
-    left: 40,
+    left: 50,
     right: 30,
     bottom: 35
   },
-  width = 600 - margin.left - margin.right,
+  width = 800 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
 //SVG that will hold the visualization
