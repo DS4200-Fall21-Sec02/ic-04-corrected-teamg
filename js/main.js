@@ -57,7 +57,10 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("height", function(d) { return height - y(d.Y); })
         .attr("fill", "#f57842")
         .on("mouseover", function(d){
-            console.log(d.X)
+            console.log(this.Y)
+            console.log(this.y)
+            console.log(d.y)
+            console.log(d.Y)
             d3.select(this)
                 .attr('fill','blue')
                 .text(d.X)
