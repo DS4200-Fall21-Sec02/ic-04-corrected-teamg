@@ -21,7 +21,8 @@ let tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("z-index", "15")
-    .style("visibility", "hidden");
+    .style("visibility", "hidden")
+    .text('ABC');
 
 //https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
 //Adapted for our assignment for most code
@@ -59,8 +60,12 @@ d3.csv("data/data.csv").then( function (data) {
         .on("mouseover", function(d){
             d3.select(this)
                 .attr('fill','blue')
-                .text(this.x)
+                .text(d.X)
                 .style("visibility", "visible");})
+        .on("mouseout", function(d){
+            d3.select(this)
+                .attr('fill','#f57842')
+                .style("visibility", "hidden");})
 
     //Append the x-axis to the SVG
     svg1.append("g")
