@@ -21,6 +21,7 @@ let tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("z-index", "15")
+    .text('abc')
     .style("visibility", "hidden");
 
 //https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
@@ -56,15 +57,10 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("y", function(d) { return y(d.Y); })
         .attr("height", function(d) { return height - y(d.Y); })
         .attr("fill", "#f57842")
-        .on("mouseover", function(d){
-            console.log(this.X)
-            console.log(this.x)
-            console.log(d.X)
-            console.log(d.x)
-            d3.select(this)
-                .attr('fill','blue')
-                .text(d.X)
-                .style("visibility", "visible");})
+        //https://chartio.com/resources/tutorials/how-to-show-data-on-mouseover-in-d3js/
+        .on("mouseover", function(d){tooltip.text(d); return tooltip.style("visibility", "visible");})
+        .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
 
         /*
