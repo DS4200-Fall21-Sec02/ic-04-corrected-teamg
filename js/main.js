@@ -5,7 +5,7 @@ let margin = {
     bottom: 35
   },
   width = 500 - margin.left - margin.right,
-  height = 300 - margin.top - margin.bottom;
+  height = 250 - margin.top - margin.bottom;
 
 //SVG that will hold the visualization
 let svg1 = d3.select('#d3-container')
@@ -37,8 +37,8 @@ d3.csv("data/data.csv").then( function (data) {
 
     //Mapping Discrete X Values to the domain for X Axis
     x.domain(data.map(function(d) { return d.X; }));
-    //Mapping Y Values from 0 to the max Y value
-    y.domain([0, d3.max(data, function(data1) { return data1.Y; })]);
+    //Mapping Y Values from 0 to the max Y value + 10
+    y.domain([0, 10 + (d3.max(data, function(data1) { return data1.Y; }))]);
 
    //https://www.educative.io/blog/d3-js-tutorial-bar-chart
 
