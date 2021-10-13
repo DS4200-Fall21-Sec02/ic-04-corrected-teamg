@@ -1,10 +1,10 @@
 let margin = {
     top: 60,
-    left: 50,
+    left: 40,
     right: 30,
     bottom: 35
   },
-  width = 500 - margin.left - margin.right,
+  width = 600 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
 //SVG that will hold the visualization
@@ -47,7 +47,7 @@ d3.csv("data/data.csv").then( function (data) {
         .enter().append("rect")
         .attr("class", "bar")
         .attr("x", function(d) { return x(d.X); })
-        .attr("width", x.bandwidth() + 50 + 10)
+        .attr("width", x.bandwidth())
         .attr("y", function(d) { return y(d.Y); })
         .attr("height", function(d) { return height - y(d.Y); });
 
