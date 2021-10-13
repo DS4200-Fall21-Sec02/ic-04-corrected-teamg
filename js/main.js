@@ -1,6 +1,6 @@
 let margin = {
     top: 60,
-    left: 70,
+    left: 50,
     right: 30,
     bottom: 35
   },
@@ -47,7 +47,7 @@ d3.csv("data/data.csv").then( function (data) {
         .enter().append("rect")
         .attr("class", "bar")
         .attr("x", function(d) { return x(d.X); })
-        .attr("width", x.bandwidth())
+        .attr("width", x.bandwidth() + 50 + 10)
         .attr("y", function(d) { return y(d.Y); })
         .attr("height", function(d) { return height - y(d.Y); });
 
