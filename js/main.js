@@ -59,7 +59,7 @@ d3.csv("data/data.csv").then( function (data) {
         .on("mouseover", function(d){
             d3.select(this)
                 .attr('fill','blue')
-                .text(d.value)
+                .text(d.X)
                 .style("visibility", "visible");})
 
     //Append the x-axis to the SVG
