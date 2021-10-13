@@ -1,7 +1,3 @@
-
-
-
-
 let margin = {
     top: 60,
     left: 50,
@@ -26,41 +22,26 @@ let svg1 = d3.select('#d3-container')
 //Adapted for our assignment for most code
 
 //Setting Scale for Bar Chart
-let x = d3.scaleBand().range([0, width]).padding(0.5),
+//We use ScaleBand For x-axis because we are dealing with ordinal X Data and padding sets distance between bars
+//ScaleLinear for y-axis because Quantitative Y data
+let x = d3.scaleBand().range([0, width]).padding(0.3),
     y = d3.scaleLinear().range([height, 0]);
 
-//Creating Group to store Chart Elements
-/*let group1 = svg1.append("group1")
-    .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
- */
 
 //https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
 //Loading Data from CSV
 d3.csv("data/data.csv").then( function (data) {
 
+    //To Confirm the data is being loaded from CSV correctly
     console.log(data)
 
-    //Mapping Discrete X Values to X Axis
+    //Mapping Discrete X Values to the domain for X Axis
     x.domain(data.map(function(d) { return d.X; }));
     //Mapping Y Values from 0 to the max Y value
     y.domain([0, d3.max(data, function(data1) { return data1.Y; })]);
 
+   //https://www.educative.io/blog/d3-js-tutorial-bar-chart
 
- /*   //appending x-axis to group
-    group1.append("group1")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(x));
-
-    //appending y-axis scale to group
-    group1.append("group1")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisLeft(y));
-
-
-  */
-
-   // https://www.educative.io/blog/d3-js-tutorial-bar-chart
     svg1.selectAll(".bar")
         .data(data)
         .enter().append("rect")
@@ -70,17 +51,14 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("y", function(d) { return y(d.Y); })
         .attr("height", function(d) { return height - y(d.Y); });
 
-    // Add x-axis
+    //Append the x-axis to the SVG
     svg1.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
 
-    // Add y-axis
+    //Append the y-axis to the SV
     svg1.append("g")
         .call(d3.axisLeft(y));
-
-
-
 
 
 });
