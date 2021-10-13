@@ -55,10 +55,10 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("x", function(d) { return x(d.X); })
         .attr("width", x.bandwidth())
         .attr("y", function(d) { return y(d.Y); })
-        .attr("height", function(d) { return height - y(d.Y); })
+        .attr("height", function(d) { return height - y(d.Y); console.log(y(d.Y)); console.log(y);})
         .attr("fill", "#f57842")
         //https://chartio.com/resources/tutorials/how-to-show-data-on-mouseover-in-d3js/
-        .on("mouseover", function(d){tooltip.text("ABC"); console.log(this); console.log(d); return tooltip.style("visibility", "visible");})
+        .on("mouseover", function(d){tooltip.text("ABC"); console.log(this.height); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
