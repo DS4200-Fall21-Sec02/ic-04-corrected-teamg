@@ -20,9 +20,9 @@ let svg1 = d3.select('#d3-container')
 let tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
-    .style("z-index", "15")
-    .text('abc')
-    .style("visibility", "hidden");
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .text("Abc12");
 
 //https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
 //Adapted for our assignment for most code
