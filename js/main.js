@@ -47,9 +47,10 @@ d3.csv("data/data.csv").then( function (data) {
         .enter().append("rect")
         .attr("class", "bar")
         .attr("x", function(d) { return x(d.X); })
-        .attr("width", x.bandwidth() * 1.4)
+        .attr("width", x.bandwidth() * 1.3)
         .attr("y", function(d) { return y(d.Y); })
-        .attr("height", function(d) { return height - y(d.Y); });
+        .attr("height", function(d) { return height - y(d.Y); })
+        .attr("fill", "#f57842");
 
     //Append the x-axis to the SVG
     svg1.append("g")
