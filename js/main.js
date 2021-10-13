@@ -1,6 +1,6 @@
 let margin = {
     top: 60,
-    left: 50,
+    left: 70,
     right: 30,
     bottom: 35
   },
