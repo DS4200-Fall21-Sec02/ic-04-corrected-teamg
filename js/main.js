@@ -24,7 +24,7 @@ let svg1 = d3.select('#d3-container')
 //Setting Scale for Bar Chart
 //We use ScaleBand For x-axis because we are dealing with ordinal X Data and padding sets distance between bars
 //ScaleLinear for y-axis because Quantitative Y data
-let x = d3.scaleBand().range([0, width]).padding(0.23),
+let x = d3.scaleBand().range([0, width]).padding(0.13),
     y = d3.scaleLinear().range([height, 0]);
 
 
