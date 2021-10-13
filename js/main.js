@@ -5,7 +5,7 @@ let margin = {
     bottom: 35
   },
   width = 500 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  height = 300 - margin.top - margin.bottom;
 
 //SVG that will hold the visualization
 let svg1 = d3.select('#d3-container')
@@ -49,7 +49,7 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("x", function(d) { return x(d.X); })
         .attr("width", x.bandwidth() * 1.5)
         .attr("y", function(d) { return y(d.Y); })
-        .attr("height", function(d) { return 0.3 * (height - y(d.Y)); })
+        .attr("height", function(d) { return height - y(d.Y); })
         .attr("fill", "#f57842");
 
     //Append the x-axis to the SVG
