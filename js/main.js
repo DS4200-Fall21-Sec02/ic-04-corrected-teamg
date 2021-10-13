@@ -58,7 +58,7 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("height", function(d) { return height - y(d.Y); })
         .attr("fill", "#f57842")
         //https://chartio.com/resources/tutorials/how-to-show-data-on-mouseover-in-d3js/
-        .on("mouseover", function(d){tooltip.text("ABC"); return tooltip.style("visibility", "visible");})
+        .on("mouseover", function(d){tooltip.text(d.Y); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -77,7 +77,7 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
 
-    //Append the y-axis to the SV
+    //Append the y-axis to the SVG
     svg1.append("g")
         .call(d3.axisLeft(y));
 
