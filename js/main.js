@@ -14,7 +14,7 @@ let svg1 = d3.select('#d3-container')
   .attr('width', '60%') // this is now required by Chrome to ensure the SVG shows up at all
   .style('background-color', 'white')
   .style('border', 'solid')
-  .attr('viewBox', [-100, -100, width + margin.left + margin.right, height + margin.top + margin.bottom].join(' '))
+  .attr('viewBox', [-30, -30, width + margin.left + margin.right, height + margin.top + margin.bottom].join(' '))
 
 
 
