@@ -59,7 +59,7 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("fill", "#f57842")
         //https://chartio.com/resources/tutorials/how-to-show-data-on-mouseover-in-d3js/
         .on("mouseover", function(d){tooltip.text(Math.round((((y(this.y.baseVal.value))/2.40250029564) + 35.5))); return tooltip.style("visibility", "visible");})
-        .on("mousemove", function(){ console.log(this)})
+        .on("mousemove", function(){ console.log(d3.events)})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
 
