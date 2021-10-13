@@ -58,6 +58,7 @@ d3.csv("data/data.csv").then( function (data) {
         .attr("fill", "#f57842")
         .on("mouseover", function(d){
             d3.select(this)
+                .attr('fill','blue')
                 .text(d.value)
                 .style("visibility", "visible");})
 
