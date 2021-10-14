@@ -21,8 +21,8 @@ let tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("z-index", "10")
-    .style("visibility", "hidden")
-    .text("Abc12");
+    .style("visibility", "visible")
+    .text("Select a Bar to see the Data!");
 
 //https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
 //Adapted for our assignment for most code
@@ -46,6 +46,7 @@ d3.csv("data/data.csv").then( function (data) {
     //Mapping Y Values from 0 to the max Y value + 10
     y.domain([0, 100]);
 
+
    //https://www.educative.io/blog/d3-js-tutorial-bar-chart
 
     svg1.selectAll(".bar")
@@ -63,14 +64,6 @@ d3.csv("data/data.csv").then( function (data) {
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
 
-        /*
-        .on("mouseout", function(d){
-            d3.select(this)
-                .attr('fill','#f57842')
-                .style("visibility", "hidden");})
-
-
-         */
 
     //Append the x-axis to the SVG
     svg1.append("g")
@@ -85,5 +78,3 @@ d3.csv("data/data.csv").then( function (data) {
 });
 
 
-
-//return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
